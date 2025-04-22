@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Privacy Protector",
+  "version": "1.0",
+  "description": "Tạo Fingerprinting ngẫu nhiên và bảo vệ quyền riêng tư.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/privacy-enhancement.js"],
+      "run_at": "document_start"
+    }
+  ],
+    "action": {
+      "default_popup": "giaodien/popup.html",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      }
+    }
+  }

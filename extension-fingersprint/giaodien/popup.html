@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trình Bảo Vệ Quyền Riêng Tư</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+      padding: 0;
+      width: 300px;
+    }
+    body.dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 8px;
+      margin: 5px 0;
+      width: 100%;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      background-color: #333;
+      color: #fff;
+    }
+    button:hover {
+      background-color: #555;
+    }
+    #privacy-controls {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+    }
+    label {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      margin-left: -125px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 10px;
+      position: fixed;
+      z-index: 1;
+      left: 50%;
+      bottom: 30px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Trình Bảo Vệ Quyền Riêng Tư</h1>
+    <p id="status" style="font-weight: bold; color: green;">
+      <span>Trạng thái:</span>
+      <span id="status-text">Đã bật</span>
+    </p>
+    <div id="privacy-controls">
+      <label><input type="checkbox" id="toggleWebRTC" checked> 🌐 WebRTC</label>
+      <label><input type="checkbox" id="toggleCanvas" checked> 🎨 Canvas</label>
+      <label><input type="checkbox" id="toggleAudio" checked> 🎵 AudioContext</label>
+      <label><input type="checkbox" id="toggleFont" checked> 🅰️ Font</label>
+      <label><input type="checkbox" id="toggleScreen" checked> 🖥️ Độ phân giải</label>
+    </div>
+    <div id="fingerprint-data" style="white-space: pre-wrap; color: gray;">
+      Đang tải fingerprint...
+    </div>
+    <div id="toast">Cài đặt đã được cập nhật</div>
+    <div id="error-message" style="display: none; color: red; margin-top: 10px; font-size: 14px;">
+      <!-- Thông báo lỗi sẽ được hiển thị ở đây -->
+    </div>
+    <div id="log-container" style="margin-top: 10px; padding: 10px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 4px; max-height: 200px; overflow-y: auto; font-size: 12px; color: #333;">
+      <p style="margin: 0; color: gray;">Log sẽ hiển thị tại đây...</p>
+    </div>
+    <button id="toggle-fingerprinting" aria-label="Bật hoặc tắt bảo vệ quyền riêng tư">Bật/Tắt Bảo Vệ</button>
+    <button id="reset-settings" aria-label="Đặt lại cài đặt về mặc định">Đặt Lại Cài Đặt</button>
+    <button id="toggle-dark-mode" aria-label="Chuyển đổi chế độ tối">Chuyển Đổi Chế Độ Tối</button>
+    <script src="popup.js"></script>
+  </body>
+  </html>
